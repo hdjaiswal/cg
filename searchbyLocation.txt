@@ -1,0 +1,6 @@
+CREATE PROCEDURE SearchbyLocation
+( @JobSeekerID int )
+AS 
+BEGIN
+ SELECT * from JobDetails where JobDetails.JobLocation=(select JobSeekerProfessionalDetails.Location from JobSeekerProfessionalDetails where JobSeekerProfessionalDetails.JobSeekerID=@JobSeekerID)
+END
