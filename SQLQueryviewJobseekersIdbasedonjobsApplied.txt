@@ -1,0 +1,23 @@
+CREATE PROCEDURE ORSGroup6.viewsJobseekersDetailsTOEmployees
+(
+   @EmployeeId int,
+   @JobId int
+)
+AS
+BEGIN
+select ORSGroup6.JobseekersPersonalDetails.FirstName,
+ORSGroup6.JobseekersPersonalDetails.LastName,
+ORSGroup6.JobseekersPersonalDetails.ContactNo,
+ORSGroup6.JobseekersPersonalDetails.EmailAddress,
+ORSGroup6.JobSeekerProfessionalDetails.CurrentDesignation,
+ORSGroup6.JobSeekerProfessionalDetails.PrimarySkills,
+ORSGroup6.JobSeekerProfessionalDetails.SecondarySkills,
+ORSGroup6.JobSeekerProfessionalDetails.TrainingAttended,
+ORSGroup6.JobSeekerProfessionalDetails.Designation,
+ORSGroup6.JobSeekerProfessionalDetails.Location,
+ORSGroup6.JobSeekerProfessionalDetails.Experience
+From ORSGroup6.AppliedJobs LEFT OUTER JOIN ORSGroup6.JobDetails on ORSGroup6.JobDetails.JobId=ORSGroup6.AppliedJobs.JobId
+LEFT OUTER JOIN ORSGroup6.JobSeekerProfessionalDetails On ORSGroup6.JobSeekerProfessionalDetails.JobSeekerID=ORSGroup6.AppliedJobs.JobSeekerID
+LEFT OUTER JOIN ORSGroup6.JobseekersPersonalDetails on ORSGroup6.JobseekersPersonalDetails.JobSeekerID=ORSGroup6.AppliedJobs.JobSeekerID
+Where ORSGroup6.AppliedJobs.JobId=@JobId AND ORSGroup6.AppliedJobs.EmployeeId=@EmployeeId
+END
