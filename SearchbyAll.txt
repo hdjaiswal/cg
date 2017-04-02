@@ -1,0 +1,22 @@
+CREATE PROCEDURE SearchbyLocation
+( @JobSeekerID int )
+AS 
+BEGIN
+ SELECT * from JobDetails where JobDetails.JobLocation=(select JobSeekerProfessionalDetails.Location from JobSeekerProfessionalDetails where JobSeekerProfessionalDetails.JobSeekerID=@JobSeekerID)
+END
+
+
+
+CREATE PROCEDURE SearchbyDesignation
+( @JobSeekerID int )
+AS 
+BEGIN
+ SELECT * from JobDetails where JobDetails.Post=(select JobSeekerProfessionalDetails.Designation from JobSeekerProfessionalDetails where JobSeekerProfessionalDetails.JobSeekerID=@JobSeekerID)
+END
+
+CREATE PROCEDURE SearchbyExperience
+( @JobSeekerID int )
+AS 
+BEGIN
+ SELECT * from JobDetails where JobDetails.Experience=(select JobSeekerProfessionalDetails.Experience from JobSeekerProfessionalDetails where JobSeekerProfessionalDetails.JobSeekerID=@JobSeekerID)
+END
