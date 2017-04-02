@@ -1,0 +1,106 @@
+
+Create Procedure ORSGroup6.JSUpdatePersonalDetails 
+(
+@JobSeekerID int
+@FirstName Varchar(20),
+@LastName Varchar(20),
+@MiddleName varchar(20),
+@ContactNo bigint,
+@Gender varchar(10),
+@MarraigeStatus varchar(10),
+@JobSeekersAddress varchar(50),
+@DOB DateTime 
+)
+AS 
+begin
+UPDATE ORSGroup6.JobseekersPersonalDetails 
+SET 
+FirstName=@FirstName,
+LastName =@LastName,
+MiddleName=@MiddleName,
+ContactNo =@ContactNo,
+Gender =@Gender,
+MarraigeStatus =@MarraigeStatus,
+JobSeekersAddress=@JobSeekersAddress,
+ DOB=@DOB
+ where 
+JobSeekerID=@JobSeekerID 
+END
+
+
+Create Procedure  ORSGroup6.JSUpdatePersonalDetails 
+(
+@JobSeekerID int,
+@CurrentDesignation varchar(20),
+@PrimarySkills varchar(50),
+@SecondarySkills varchar(50),
+@TrainingAttended varchar(30),
+@Designation varchar(20),
+@Location varchar(30),
+@Experience varchar(20),
+)
+AS 
+BEGIN
+Update ORSGroup6.JobSeekerProfessionalDetails
+SET
+CurrentDesignation=@CurrentDesignation,
+PrimarySkills=@PrimarySkills,
+SecondarySkills=@SecondarySkills,
+TrainingAttended=@TrainingAttended,
+Designation=@Designation,
+Location=@Location,
+Experience=@Experience,
+where JobSeekerID=@JobSeekerID
+
+
+Create Procedure ORSGroup6.JSUpdateBEHSCSSCDetails 
+(
+@JobSeekerID int,
+@BEDegree Varchar(20),
+ @BEBranch Varchar(20),
+ @BEPassingyear int,
+ @BEPercentage Decimal,
+ @BEUniversityName varchar(20),
+ @SSCPassingyear int,
+ @SSCPercentage Decimal,
+ @SSCUniversityName varchar(20),
+ @HSCPassingyear int,
+ @HSCPercentage Decimal,
+ @HSCUniversityName varchar(20),
+ @JobseekersID int
+ )
+ AS
+BEGIN
+Update  ORSGroup6.BEQulaification 
+SET(BEDegree=@BEDegree,BEBranch=@BEBranch,BEPassingyear=@BEPassingyear,BEPercentage=@BEPercentage,BEUniversityName=@BEUniversityName)where JobseekersID=@JobseekersID
+UPDATE ORSGroup6.SSCQulaification SET (SSCPassingyear=@SSCPassingyear,SSCPercentage=@SSCPercentage,SSCUniversityName=@SSCUniversityName)where JobseekersID=@JobseekersID
+UPDATE ORSGroup6.HSCQulaification SET (HSCPassingyear=@HSCPassingyear,HSCPercentage=@HSCPercentage,HSCUniversityName=@HSCUniversityName)where JobseekersID=@JobseekersID
+END
+
+
+Create Procedure ORSGroup6.JSUpdateMEDetails 
+(
+@JobSeekerID int,
+@MEDegree Varchar(20),
+@MEBranch Varchar(20),
+@MEPassingyear int,
+@MEPercentage Decimal,
+@MEUniversityName varchar(20),
+)
+AS 
+BEGIN
+update ORSGroup6.MEQulaification set 
+ MEDegree=@MEDegree,
+ MEBranch=@MEBranch,
+ MEPassingyear=@MEPassingyear,
+ MEPercentage=@MEPercentage,
+ MEUniversityName=@MEUniversityName)
+where
+JobseekersID=@JobseekersID
+END
+
+ 
+ 
+
+
+
